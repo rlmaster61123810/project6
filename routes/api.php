@@ -25,5 +25,13 @@ Route::middleware('auth:sanctum')->post('/post/update/{id}', [PostController::cl
 Route::middleware('auth:sanctum')->post('/post/delete/{id}', [PostController::class, 'apiDestroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+Route::get('/banners', [BannerController::class, 'apiIndex']);
+Route::middleware('auth:sanctum')->get('/banners/{id}', [BannerController::class, 'apiPost']);
+Route::middleware('auth:sanctum')->post('/banners/store', [BannerController::class, 'apiStore']);
+Route::middleware('auth:sanctum')->post('/banners/update/{id}', [BannerController::class, 'apiUpdate']);
+Route::middleware('auth:sanctum')->post('/banners/delete/{id}', [BannerController::class, 'apiDestroy']);
+
+
     return $request->user();
 });
